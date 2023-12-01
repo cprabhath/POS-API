@@ -37,8 +37,8 @@ const register = (req, res) => {
           const transporter = nodeMailer.createTransport({
             service: "gmail",
             auth: {
-              user: "librarylkactivation@gmail.com",
-              pass: "vrtj daxu ihkp rfgq",
+              user: "your email",
+              pass: "your password",
             },
           });
           // Email Content
