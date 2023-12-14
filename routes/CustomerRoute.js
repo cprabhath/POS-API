@@ -16,7 +16,7 @@ router.delete("/delete-by-id", verifyToken, customerController.deleteById);
 
 router.put("/update", verifyToken, customerController.update);
 
-router.get("/find-all", customerController.findAll);
+router.get("/find-all", verifyToken, customerController.findAll);
 //------------------------------------------------//
 
 //------------------Export module----------------//
