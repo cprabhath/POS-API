@@ -85,9 +85,9 @@ const deleteById = async (req, resp) => {
 //------------------------------------------------//
 
 //------------------Customer Find All-------------//
-const findAll = (req, resp) => {
+const findAll = async (req, resp) => {
   try {
-    const { searchText, page = 1, size = 10 } = req.params;
+    const { searchText, page = 1, size = 5 } = req.params;
     const pageNumber = parseInt(page);
     const pageSize = parseInt(size);
 
@@ -99,7 +99,7 @@ const findAll = (req, resp) => {
 
     const skip = (pageNumber - 1) * pageSize;
 
-    const data = CustomerSchema.find(query).limit(pageSize).skip(skip);
+    const data = await CustomerSchema.find(query).limit(pageSize).skip(skip).exec();
     resp.status(200).json(data);
   } catch (err) {
     resp.status(500).json({

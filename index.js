@@ -4,6 +4,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 //--------------------------------------------------------//
 
 //----------------- Importing Files ----------------------//
@@ -27,6 +28,7 @@ const DATABASE_NAME = process.env.DATABASE_NAME;
 //------------------- Body Parser ------------------------//
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 //--------------------------------------------------------//
 
 //------------------ Connect to MongoDB ------------------//
