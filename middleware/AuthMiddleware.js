@@ -16,7 +16,7 @@ const verifyToken = (req, res, next) => {
       message: "token is missing",
     });
   } else {
-    jwt.verify(token, secretKey, (err, decoded) => {
+    jwt.verify(token, secretKey, (err) => {
       if (err) {
         res.status(401).json({
           message: err.message,

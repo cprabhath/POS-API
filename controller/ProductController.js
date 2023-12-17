@@ -9,8 +9,8 @@ const create = (req, resp) => {
   const product = new ProductSchema({
     name: req.body.name,
     description: req.body.description,
-    image: req.body.image,
-    unitPrice: req.body.unitPrice,
+    imageUrl: req.body.imageUrl,
+    price: req.body.price,
     qtyOnHand: req.body.qtyOnHand,
   });
 
@@ -56,8 +56,8 @@ const update = async (req, resp) => {
       $set: {
         name: req.body.name,
         description: req.body.description,
-        image: req.body.image,
-        unitPrice: req.body.unitPrice,
+        imageUrl: req.body.imageUrl,
+        price: req.body.price,
         qtyOnHand: req.body.qtyOnHand,
       },
     },
@@ -91,7 +91,7 @@ const deleteById = async (req, resp) => {
 //------------------------------------------------//
 
 //------------------Product Find All--------------//
-const findAll = (req, resp) => {
+const findAll = async (req, resp) => {
   try {
     const { searchText, page = 1, size = 10 } = req.params;
     const pageNumber = parseInt(page);
@@ -105,7 +105,7 @@ const findAll = (req, resp) => {
 
     const skip = (pageNumber - 1) * pageSize;
 
-    const data = ProductSchema.find(query).limit(pageSize).skip(skip);
+    const data = await ProductSchema.find(query).limit(pageSize).skip(skip).exec();
     resp.status(200).json(data);
   } catch (err) {
     resp.status(500).json({

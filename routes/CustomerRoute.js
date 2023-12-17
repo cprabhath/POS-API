@@ -8,15 +8,26 @@ const router = express.Router();
 //---------------------------------------------------//
 
 //------------------Customer Routes----------------//
-router.post("/create", verifyToken, customerController.create);
+// router.post("/create", verifyToken ,customerController.create);
 
-router.get("/find-by-id", verifyToken, customerController.findById);
+// router.get("/find-by-id/:id", verifyToken, customerController.findById);
 
-router.delete("/delete-by-id", verifyToken, customerController.deleteById);
+// router.delete("/delete-by-id/:id", verifyToken, customerController.deleteById);
 
-router.put("/update", verifyToken, customerController.update);
+// router.put("/update/:id", verifyToken, customerController.update);
 
-router.get("/find-all", verifyToken, customerController.findAll);
+// router.get("/find-all", verifyToken ,customerController.findAll);
+
+
+router.post("/create" ,customerController.create);
+
+router.get("/find-by-id/:id", customerController.findById);
+
+router.delete("/delete-by-id/:id", customerController.deleteById);
+
+router.put("/update/:id", customerController.update);
+
+router.get("/find-all" ,customerController.findAll);
 //------------------------------------------------//
 
 //------------------Export module----------------//

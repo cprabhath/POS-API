@@ -73,6 +73,7 @@ const update = async (req, resp) => {
 
 //------------------Customer Delete---------------//
 const deleteById = async (req, resp) => {
+  console.log(req.params.id);
   const deleteData = await CustomerSchema.findByIdAndDelete(req.params.id);
   if (deleteData) {
     resp.status(200).json({ message: "Customer deleted successfully" });
@@ -87,7 +88,7 @@ const deleteById = async (req, resp) => {
 //------------------Customer Find All-------------//
 const findAll = async (req, resp) => {
   try {
-    const { searchText, page = 1, size = 5 } = req.params;
+    const { searchText, page = 1, size = 10 } = req.params;
     const pageNumber = parseInt(page);
     const pageSize = parseInt(size);
 
